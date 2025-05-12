@@ -11,8 +11,9 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const BASE_URL = "/api/casas";
-const MIS_CASAS_URL = "/api/casas/mis-casas";
+const API = import.meta.env.VITE_API_URL;
+const BASE_URL = `${API}/casas`;
+const MIS_CASAS_URL = `${API}/casas/mis-casas`;
 
 const Listing = () => {
   const [casas, setCasas] = useState([]);
@@ -106,7 +107,7 @@ const Listing = () => {
   };
 
   const handleDelete = async (id) => {
-    const token = sesionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     if (!token) {
       setError("No estás autenticado.");

@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+const API = import.meta.env.VITE_API_URL;
 
 const Home = () => {
   const [casas, setCasas] = useState([]);
@@ -20,7 +21,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/api/casas")
+    fetch(`${API}/casas`)
       .then((res) => res.json())
       .then((data) => {
         setCasas(data.casas);

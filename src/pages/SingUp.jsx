@@ -6,6 +6,9 @@ const SingUp = () => {
   const [isLoading, setIsLoading] = useState(false); // New loading state
   const navigate = useNavigate();
 
+  const API = import.meta.env.VITE_API_URL;
+  const SIGNUP_URL = `${API}/auth/signup`;
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -15,7 +18,7 @@ const SingUp = () => {
     setIsLoading(true); // Show loading state
 
     try {
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch(SIGNUP_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

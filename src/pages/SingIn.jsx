@@ -7,6 +7,9 @@ const SingIn = () => {
   const navigate = useNavigate();
   const { login } = useAuth(); // Get the login function from context
 
+  const API = import.meta.env.VITE_API_URL;
+  const SIGNIN_URL = `${API}/auth/signin`;
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -16,7 +19,7 @@ const SingIn = () => {
     console.log(formData);
 
     try {
-      const res = await fetch("/api/auth/signin", {
+      const res = await fetch(SIGNIN_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
